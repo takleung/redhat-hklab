@@ -1,0 +1,16 @@
+apiVersion: syndesis.io/v1beta2
+kind: Syndesis
+metadata:
+  name: app
+  namespace: fuse-online
+spec:
+  routeHostname: app-fuse-online.apps.cluster.demo.local
+  addons:
+    jaeger:
+      enabled: true
+    ops:
+      enabled: true
+    publicApi:
+      enabled: true
+    todo:
+      enabled: true
