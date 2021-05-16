@@ -1,0 +1,47 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  name: tyip-6jvg8-worker-esxi03
+  namespace: openshift-machine-api
+  labels:
+    machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+      machine.openshift.io/cluster-api-machineset: tyip-6jvg8-worker-esxi03
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: tyip-6jvg8-worker-esxi03
+    spec:
+      metadata: {}
+      providerSpec:
+        value:
+          numCoresPerSocket: 1
+          diskGiB: 120
+          snapshot: ''
+          userDataSecret:
+            name: worker-user-data
+          memoryMiB: 32768
+          credentialsSecret:
+            name: vsphere-cloud-credentials
+          network:
+            devices:
+              - networkName: VM Network
+          metadata:
+            creationTimestamp: null
+          numCPUs: 8
+          kind: VSphereMachineProviderSpec
+          workspace:
+            datacenter: Datacenter
+            datastore: esxi03-local-SSD1
+            folder: /Datacenter/vm/tyip-6jvg8
+            resourcePool: /Datacenter/host/hklab/Resources
+            server: vcenter.hklab-redhat.com
+          template: tyip-6jvg8-rhcos
+          apiVersion: vsphereprovider.openshift.io/v1beta1

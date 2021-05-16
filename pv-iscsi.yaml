@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ocp4log1
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem  
+  iscsi:
+     targetPortal: 192.168.35.19
+     iqn: iqn.2011-08.com.asustor:as-604t-89deda.ocp4log1
+     lun: 0
+     fsType: 'ext4'
+     readOnly: false
+  storageClassName: nas-iscsi

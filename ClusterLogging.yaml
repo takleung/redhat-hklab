@@ -17,11 +17,11 @@ spec:
     elasticsearch:
       nodeCount: 3 
       storage:
-        storageClassName: "nas-nfs" 
+        storageClassName: "nas-iscsi" 
         size: 200G
       resources: 
         requests:
-          memory: "8Gi"
+          memory: "4Gi"
       redundancyPolicy: "SingleRedundancy"
   visualization:
     type: "kibana"  

@@ -1,0 +1,50 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  name: tyip-6jvg8-infra
+  namespace: openshift-machine-api
+  labels:
+    machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+      machine.openshift.io/cluster-api-machineset: tyip-6jvg8-infra
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+        machine.openshift.io/cluster-api-machine-role: infra
+        machine.openshift.io/cluster-api-machine-type: infra
+        machine.openshift.io/cluster-api-machineset: tyip-6jvg8-infra
+    spec:
+      metadata:
+        creationTimestamp: null
+        labels:
+          node-role.kubernetes.io/infra: ""        
+      providerSpec:
+        value:
+          numCoresPerSocket: 1
+          diskGiB: 120
+          snapshot: ''
+          userDataSecret:
+            name: worker-user-data
+          memoryMiB: 32768
+          credentialsSecret:
+            name: vsphere-cloud-credentials
+          network:
+            devices:
+              - networkName: VM Network
+          metadata:
+            creationTimestamp: null
+          numCPUs: 8
+          kind: VSphereMachineProviderSpec
+          workspace:
+            datacenter: Datacenter
+            datastore: esxi01-local-SATA1
+            folder: /Datacenter/vm/tyip-6jvg8
+            resourcePool: /Datacenter/host/hklab/Resources
+            server: vcenter.hklab-redhat.com
+          template: tyip-6jvg8-rhcos
+          apiVersion: vsphereprovider.openshift.io/v1beta1

@@ -1,0 +1,42 @@
+export NS="ray-3scale-test"
+export URL="https://3scale-admin.apps.tyip.hklab-redhat.com:443"
+export NAME="threescale"
+export AUTH="1"
+export TOKEN="c284ba81e401b046b3041e415be57a3c2294b405533b640cec04c2a5f89c423b"
+oc delete handler threescale -n ${NS}
+oc delete instance threescale -n ${NS}
+oc delete rule threescale -n ${NS}
+oc exec -n ${NS} $(oc get po -n ${NS} -o jsonpath='{.items[?(@.metadata.labels.app=="3scale-istio-adapter")].metadata.name}') \
+-it -- ./3scale-config-gen \
+--url ${URL} --name ${NAME} --token ${TOKEN} -n ${NS} --auth ${AUTH} | oc create -f -
+
+export CREDENTIALS_NAME="threescale"
+export SERVICE_ID="3"
+export DEPLOYMENT="productpage-v1"
+
+patch="$(oc get deployment "${DEPLOYMENT}" --template='{"spec":{"template":{"metadata":{"labels":{ {{ range $k,$v := .spec.template.metadata.labels }}"{{ $k }}":"{{ $v }}",{{ end }}"service-mesh.3scale.net/service-id":"'"${SERVICE_ID}"'","service-mesh.3scale.net/credentials":"'"${CREDENTIALS_NAME}"'"}}}}}' )"
+oc patch deployment "${DEPLOYMENT}" --patch ''"${patch}"''
+
+curl -v -k        `echo "${GATEWAY_URL}/productpage"`
+
+oc logs -f `oc get pod -n $SM_CP_NS | grep "3scale-istio-adapter" | awk '{print $1}'` \
+          -n $SM_CP_NS \
+          -c 3scale-istio-adapter
+
+export GATEWAY_URL=$(oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}')
+curl -v -k \
+       `echo "$GATEWAY_URL/productpage?user_key=c62600963b0f712b0341f35431267154"`
+
+api policy -->
+ciurite breaker
+
+siege -c 3  -d 10 curl -H "User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0" $(oc get route frontend -n control-plane -o jsonpath='{.spec.host}')
+
+siege -c 1 -d 10 curl -H "User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36 Edg/79.0.309.71" $(oc get route frontend -n control-plane -o jsonpath='{.spec.host}')
+
+export GATEWAY_URL=$(oc -n istio-system get route istio-ingressgateway -o jsonpath='{.spec.host}')
+siege -c 3 -d 10 curl -k `echo "$GATEWAY_URL/productpage?user_key=c62600963b0f712b0341f35431267154"`
+
+What is the component included in managed servcies? Debezium is included? Can we have the component list for managed servcies?
+
+What is the roadmap of Debezium? As i know it is based on Kafka connect, but Kafka connect will not be longer exists.
