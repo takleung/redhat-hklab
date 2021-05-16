@@ -1,0 +1,45 @@
+$ORIGIN cluster.demo.local.
+$TTL 86400
+@	SOA	ns1.hklab-redhat.com.	hostmaster.hklab-redhat.com. (
+		2019101309 ; serial
+		21600      ; refresh after 6 hours
+		3600       ; retry after 1 hour
+		604800     ; expire after 1 week
+		86400 )    ; minimum TTL of 1 day
+;
+;
+					NS	ns1.hklab-redhat.com.
+					NS	ns2.hklab-redhat.com.
+storage				IN	A	192.168.20.30
+router				IN	A	192.168.20.29 
+bootstrap			IN	A	192.168.20.56
+control-plane-0			IN	A	192.168.20.57
+control-plane-1			IN	A	192.168.20.58
+control-plane-2			IN	A	192.168.20.59
+compute-0			IN	A	192.168.20.60
+compute-1			IN	A	192.168.20.61
+compute-2			IN	A	192.168.20.63
+compute-3                       IN      A       192.168.20.64
+compute-4                       IN      A       192.168.20.65
+compute-5                       IN      A       192.168.20.66
+compute-6                       IN      A       192.168.20.67
+compute-7                       IN      A       192.168.20.68
+compute-8                       IN      A       192.168.20.69
+compute-9                       IN      A       192.168.20.70
+compute-10                      IN      A       192.168.20.71
+compute-11                      IN      A       192.168.20.72
+compute-12                      IN      A       192.168.20.73
+compute-13                      IN      A       192.168.20.74
+compute-14                      IN      A       192.168.20.75
+compute-15                      IN      A       192.168.20.76
+ray-adfs			IN	A	192.168.20.72
+enterpriseregistration		IN	CNAME	ray-adfs
+api				IN	CNAME	router
+api-int				IN	CNAME	router
+*.apps				IN	CNAME	router
+etcd-0				IN	A       192.168.20.57
+etcd-1				IN	A       192.168.20.58
+etcd-2				IN	A       192.168.20.59
+_etcd-server-ssl._tcp.cluster.demo.local	86400 IN SRV 0 10 2380 etcd-0.cluster.demo.local.
+_etcd-server-ssl._tcp.cluster.demo.local	86401 IN SRV 0 10 2380 etcd-1.cluster.demo.local.
+_etcd-server-ssl._tcp.cluster.demo.local	86402 IN SRV 0 10 2380 etcd-2.cluster.demo.local.

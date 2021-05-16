@@ -1,0 +1,14 @@
+$ORIGIN ocp3.demo.local.
+$TTL 86400
+@	SOA	ns1.hklab-redhat.com.	hostmaster.hklab-redhat.com. (
+		2019101601 ; serial
+		21600      ; refresh after 6 hours
+		3600       ; retry after 1 hour
+		604800     ; expire after 1 week
+		86400 )    ; minimum TTL of 1 day
+;
+;
+		NS	ns1.hklab-redhat.com.
+		NS	ns2.hklab-redhat.com.
+master	IN	A	192.168.20.63
+*.apps	IN	A	192.168.20.63

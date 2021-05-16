@@ -1,0 +1,20 @@
+$TTL 86400
+@       SOA     ns1.hklab-redhat.com.   hostmaster.hklab-redhat.com. (
+                2019101600 ; serial
+                21600      ; refresh after 6 hours
+                3600       ; retry after 1 hour
+                604800     ; expire after 1 week
+                86400 )    ; minimum TTL of 1 day
+;
+@	IN	NS	ns1.
+;
+
+$ORIGIN 17.168.192.in-addr.arpa.
+10	PTR	ocp311master.hklab2.redhat.com.
+11	PTR	ocp311master1.hklab2.redhat.com.
+12	PTR	ocp311master2.hklab2.redhat.com.
+13	PTR	ocp311master3.hklab2.redhat.com.
+14	PTR	ocp311infra1.hklab2.redhat.com.
+15	PTR	ocp311infra2.hklab2.redhat.com.
+16	PTR	ocp311node1.hklab.redhat.com.
+17	PTR	ocp311node2.hklab.redhat.com.

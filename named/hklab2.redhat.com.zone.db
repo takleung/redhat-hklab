@@ -1,0 +1,23 @@
+$ORIGIN hklab2.redhat.com.
+
+; This is the old domain for old vmware infrastructure
+$TTL 86400
+@       SOA     ns1.hklab-redhat.com.       hostmaster.hklab-redhat.com. (
+                2019101403 ; serial
+                21600      ; refresh after 6 hours
+                3600       ; retry after 1 hour
+                604800     ; expire after 1 week
+                86400 )    ; minimum TTL of 1 day
+;
+;
+		NS	ns1.hklab-redhat.com.
+		NS	ns2.hklab-redhat.com.
+
+; All host records goes here
+ocp311master	IN	A	192.168.17.10
+ocp311master1	IN	A	192.168.17.11
+ocp311master2	IN	A	192.168.17.12
+ocp311master3	IN	A	192.168.17.13
+ocp311infra1	IN	A	192.168.17.14
+ocp311infra2	IN	A	192.168.17.15
+*.cloudapps311	IN	A	192.168.17.10

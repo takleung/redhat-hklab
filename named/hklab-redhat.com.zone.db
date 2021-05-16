@@ -1,0 +1,64 @@
+$ORIGIN hklab-redhat.com.
+$TTL 86400
+@	SOA	ns1.hklab-redhat.com.	hostmaster.hklab-redhat.com. (
+		2019111501 ; serial
+		21600      ; refresh after 6 hours
+		3600       ; retry after 1 hour
+		604800     ; expire after 1 week
+		86400 )    ; minimum TTL of 1 day
+;
+;
+		NS	ns1.hklab-redhat.com.
+		NS	ns2.hklab-redhat.com.
+ns1		IN	A	192.168.39.2
+ns2		IN	A	192.168.32.2
+ca01		IN	CNAME	ns2
+nas01		IN	A	192.168.39.3
+esxi01          IN      A       192.168.39.11
+esxi02		IN	A	192.168.39.12
+esxi03		IN	A	192.168.39.13
+supermicro	IN	A	192.168.35.12
+dc01-gateway    IN      A       192.168.39.21
+dc02-gateway    IN      A       192.168.39.22
+wanem           IN      A       192.168.39.23
+vcenter         IN      A       192.168.39.31
+dc01-lb01	IN	A	172.16.0.3
+
+
+;------------- Ray DNS ------------------------
+
+api.tyip       IN      A       192.168.20.170
+*.apps.tyip    IN      A       192.168.20.171
+
+api.acm       IN      A       192.168.20.172
+*.apps.acm    IN      A       192.168.20.173
+
+api.rhv       IN      A       192.168.20.174
+*.apps.rhv    IN      A       192.168.20.176
+
+;------------- Ray DNS end ------------------------
+
+
+;------------- Radar DNS ------------------------
+
+radar-web01.rlui	IN	A	172.20.7.2
+radar-bootstrap.rlui	IN	A	172.20.7.3
+radar-control01.rlui	IN	A	172.20.7.4
+radar-control02.rlui	IN	A	172.20.7.5
+radar-control03.rlui	IN	A	172.20.7.6
+radar-worker01.rlui	IN	A	172.20.7.7
+radar-lb01.rlui		IN	A	172.20.7.8
+
+
+api.rlui		IN	A       172.20.7.8
+api-int.rlui		IN	A       172.20.7.8
+*.apps.rlui		IN	A       172.20.7.8
+etcd-0.rlui		IN	A       172.20.7.4
+etcd-1.rlui		IN	A       172.20.7.5
+etcd-2.rlui		IN	A       172.20.7.6
+;
+_etcd-server-ssl._tcp.rlui   86400 IN    SRV 0        10     2380 etcd-0.rlui.hklab-redhat.com.
+_etcd-server-ssl._tcp.rlui   86400 IN    SRV 0        10     2380 etcd-1.rlui.hklab-redhat.com.
+_etcd-server-ssl._tcp.rlui   86400 IN    SRV 0        10     2380 etcd-2.rlui.hklab-redhat.com.
+
+;------------ Radar DNS End ---------------------

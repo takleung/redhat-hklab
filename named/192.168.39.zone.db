@@ -1,0 +1,17 @@
+$TTL 86400
+@       SOA     ns1.hklab-redhat.com.   hostmaster.hklab-redhat.com. (
+                2019101700 ; serial
+                21600      ; refresh after 6 hours
+                3600       ; retry after 1 hour
+                604800     ; expire after 1 week
+                86400 )    ; minimum TTL of 1 day
+;
+@       IN      NS      ns1.
+$ORIGIN 39.168.192.in-addr.arpa.
+2	PTR	ns1.hklab-redhat.com.
+3	PTR	nas01.hklab-redhat.com.
+11	PTR	esxi01.hklab-redhat.com.
+21	PTR	dc01-gateway.hklab-redhat.com.
+22	PTR	dc02-gateway.hklab-redhat.com.
+23	PTR	wanem.hklab-redhat.com.
+31	PTR	vcenter.hklab-redhat.com.

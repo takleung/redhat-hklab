@@ -1,0 +1,12 @@
+$TTL 1W
+@           IN      SOA     ns1.labs.local.        root (
+                        2019052300      ; serial
+                        3H              ; refresh (3 hours)
+                        30M             ; retry (30 minutes)
+                        2W              ; expiry (2 weeks)
+                        1W )            ; minimum (1 week)
+            IN      NS      ns1.labs.local.
+
+ns1         IN      A       192.168.35.1
+
+adfs        IN      A       192.168.20.95

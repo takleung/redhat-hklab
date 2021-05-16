@@ -1,0 +1,37 @@
+$TTL 86400
+@       SOA     ns1.hklab-redhat.com.   hostmaster.hklab-redhat.com. (
+                2019112900 ; serial
+                21600      ; refresh after 6 hours
+                3600       ; retry after 1 hour
+                604800     ; expire after 1 week
+                86400 )    ; minimum TTL of 1 day
+;
+@       IN      NS      ns1.
+
+$ORIGIN 20.168.192.in-addr.arpa.
+12	PTR	vcenter12.hklab.redhat.com.
+17	PTR	esxi17.hklab.redhat.com.
+29	PTR	router.cluster.demo.local.
+56	PTR	bootstrap.cluster.demo.local.
+57	PTR	control-plane-0.cluster.demo.local.
+58	PTR	control-plane-1.cluster.demo.local.
+59	PTR	control-plane-2.cluster.demo.local.
+60	PTR	compute-0.cluster.demo.local.
+61	PTR	compute-1.cluster.demo.local.
+63	PTR	compute-2.cluster.demo.local.
+64      PTR     compute-3.cluster.demo.local.
+65      PTR     compute-4.cluster.demo.local.
+66      PTR     compute-5.cluster.demo.local.
+67      PTR     compute-6.cluster.demo.local.
+68	PTR	compute-7.cluster.demo.local.
+69      PTR     compute-8.cluster.demo.local.
+70      PTR     compute-9.cluster.demo.local.
+71      PTR     compute-10.cluster.demo.local.
+72      PTR     compute-11.cluster.demo.local.
+73      PTR     compute-12.cluster.demo.local.
+74      PTR     compute-13.cluster.demo.local.
+75      PTR     compute-14.cluster.demo.local.
+76      PTR     compute-15.cluster.demo.local.
+72	PTR	ray-adfs.cluster.demo.local.
+110	PTR	esxi11.hklab.redhat.com.
+30	PTR	storage.cluster.demo.local.
