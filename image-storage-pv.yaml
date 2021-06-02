@@ -4,7 +4,7 @@ metadata:
   name: image-registry-pv
 spec:
   capacity:
-    storage: 100Gi 
+    storage: 100Gi
   accessModes:
   - ReadWriteMany
   nfs: 
@@ -12,3 +12,4 @@ spec:
     server: 192.168.35.19
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nas-nfs
+  

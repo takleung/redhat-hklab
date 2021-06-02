@@ -1,23 +1,24 @@
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
-  name: tyip-6jvg8-infra
+  name: tyip-xlct5-infra
   namespace: openshift-machine-api
   labels:
-    machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+    machine.openshift.io/cluster-api-cluster: tyip-xlct5
 spec:
   replicas: 1
+  Unschedulable: true
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: tyip-6jvg8
-      machine.openshift.io/cluster-api-machineset: tyip-6jvg8-infra
+      machine.openshift.io/cluster-api-cluster: tyip-xlct5
+      machine.openshift.io/cluster-api-machineset: tyip-xlct5-infra
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+        machine.openshift.io/cluster-api-cluster: tyip-xlct5
         machine.openshift.io/cluster-api-machine-role: infra
         machine.openshift.io/cluster-api-machine-type: infra
-        machine.openshift.io/cluster-api-machineset: tyip-6jvg8-infra
+        machine.openshift.io/cluster-api-machineset: tyip-xlct5-infra
     spec:
       metadata:
         creationTimestamp: null
@@ -43,8 +44,8 @@ spec:
           workspace:
             datacenter: Datacenter
             datastore: esxi01-local-SATA1
-            folder: /Datacenter/vm/tyip-6jvg8
+            folder: /Datacenter/vm/tyip-xlct5
             resourcePool: /Datacenter/host/hklab/Resources
             server: vcenter.hklab-redhat.com
-          template: tyip-6jvg8-rhcos
+          template: tyip-xlct5-rhcos
           apiVersion: vsphereprovider.openshift.io/v1beta1

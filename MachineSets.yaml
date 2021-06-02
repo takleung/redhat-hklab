@@ -1,23 +1,23 @@
 apiVersion: machine.openshift.io/v1beta1
 kind: MachineSet
 metadata:
-  name: tyip-6jvg8-worker-esxi03
+  name: tyip-xlct5-worker-esxi03
   namespace: openshift-machine-api
   labels:
-    machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+    machine.openshift.io/cluster-api-cluster: tyip-xlct5
 spec:
   replicas: 1
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: tyip-6jvg8
-      machine.openshift.io/cluster-api-machineset: tyip-6jvg8-worker-esxi03
+      machine.openshift.io/cluster-api-cluster: tyip-xlct5
+      machine.openshift.io/cluster-api-machineset: tyip-xlct5-worker-esxi03
   template:
     metadata:
       labels:
-        machine.openshift.io/cluster-api-cluster: tyip-6jvg8
+        machine.openshift.io/cluster-api-cluster: tyip-xlct5
         machine.openshift.io/cluster-api-machine-role: worker
         machine.openshift.io/cluster-api-machine-type: worker
-        machine.openshift.io/cluster-api-machineset: tyip-6jvg8-worker-esxi03
+        machine.openshift.io/cluster-api-machineset: tyip-xlct5-worker-esxi03
     spec:
       metadata: {}
       providerSpec:
@@ -40,8 +40,8 @@ spec:
           workspace:
             datacenter: Datacenter
             datastore: esxi03-local-SSD1
-            folder: /Datacenter/vm/tyip-6jvg8
+            folder: /Datacenter/vm/tyip-xlct5
             resourcePool: /Datacenter/host/hklab/Resources
             server: vcenter.hklab-redhat.com
-          template: tyip-6jvg8-rhcos
+          template: tyip-xlct5-rhcos
           apiVersion: vsphereprovider.openshift.io/v1beta1
