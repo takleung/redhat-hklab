@@ -1,0 +1,47 @@
+apiVersion: v1
+baseDomain: hklab-redhat.com
+metadata:
+  name: bm
+networking:
+  machineCIDR: 192.168.0.0/16
+  networkType: OVNKubernetes
+compute:
+- name: worker
+  replicas: 0
+controlPlane:
+  name: master
+  replicas: 3
+  platform:
+    baremetal: {}
+platform:
+  baremetal:
+    apiVIP: 192.168.20.179
+    ingressVIP: 192.168.20.180
+    provisioningNetwork: "Disabled"
+    hosts:
+      - name: openshift-master-0
+        role: master
+        bmc:
+          address: ipmi://192.168.35.16
+          username: admin
+          password: admin
+        bootMACAddress: D0:50:99:C2:14:35
+        hardwareProfile: default
+      - name: openshift-master-1
+        role: master
+        bmc:
+          address: ipmi://192.168.35.17
+          username: admin
+          password: admin
+        bootMACAddress: D0:50:99:C2:13:71
+        hardwareProfile: default
+      - name: openshift-master-2
+        role: master
+        bmc:
+          address: ipmi://192.168.35.10
+          username: ADMIN
+          password: 'hK!TESthK!TESt'
+        bootMACAddress: 3c:ec:ef:6d:48:98
+        hardwareProfile: default
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K3R5aXByZWRoYXRjb20xcXlyZWdxbWtncjVlbTZxcnN0YjBkbWhjZ3g6RjAzWDJPNEQ4NlJITE01M0dXMVNYRjRINkdHNkdJTEhFMzRVQVozUzFZOFRBSjk2M1M5R1NCNko4RDFMMVA2TA==","email":"tyip@redhat.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K3R5aXByZWRoYXRjb20xcXlyZWdxbWtncjVlbTZxcnN0YjBkbWhjZ3g6RjAzWDJPNEQ4NlJITE01M0dXMVNYRjRINkdHNkdJTEhFMzRVQVozUzFZOFRBSjk2M1M5R1NCNko4RDFMMVA2TA==","email":"tyip@redhat.com"},"registry.connect.redhat.com":{"auth":"NTI1MTE4NzF8dWhjLTFRWVJlZ1Fta0dyNWVtNnFyc3RCMGRtSENHeDpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTVaR1ZpTkdaak1HVTVaalUwWldNMllqaGxaRFV3TW1FM016STROelF5TWlKOS5odjcxRHJFdGJCa1RqcmtxdWZUQndRUzJuU1pHWmpmVzV3RHR0cXlsc24taFZzTmpKVEt3UHdnbjREX1ZuV05wSk14S05yeWdtb1JKQzFaeVU5Ql92UlIxOEs2alBoeVZSM0QzeGNzZnhTZHdUakJnMFZTbnVlN1RSNGloNkV5SjV2SWZhOUpuc05PR1A2SGV1aGhPSHhnLU1IYV8xMERFS25EN1lFNFBXYmlXYmhPWmlOX2hOdmFyOEo4S2R0aElPbWFsTEczQWZPU1drU1NkX1ZONEtZSGRjSlJ1c3F1RkROYk1pNVVIQmI5OWRheFdlQmVXRGNwblpoMHFFTWR1TzhtTlV0YW5CVVNrSDUwNVpxVmphejNQbDBwbF9MSDFPVEVpTmlrd3F6eGRGeG0tSDVzTzA1dnpKcTd2V1JEN3RjNGpVSWxaWV9WU0gtRDNGbEE1V2c4WVNlSU90cFFBZmd2QkFyTko5dnRvUlRNY3FIOXN6VEFQc25JbHI4TWlUMTFWRWNCLVVkNmxkYXlTU1NEU2lRcFk5X2lydm84aGJhRUc4YnB0N2FLaS1NV0hBbFBROTI3WVBvT1pZM2FSY3MtTlpDZXlUREtmNnQ1LUJFWF9tWVp0Snp4a1hlRFZac2pRRjlWcWM5VERtbGFJU1l6eEtoVkZUbTFYNG51T3BIam9HNk5ZaFdNQ1B4ZmU0VkNBYUo3alFVN0tZampoTXFyTUhtWl9IZ1dKOTlBZzZYVTFsWkFDc251RWJtMTdZdGcwbEw5WUh5QnljUkFVZWY5UTgzR21hM0ItUXBfcUhEVWxKWXpnZGpWMGg0bjNQQllpNHo1bXB4M3pxRjFjMjE4WXlYMnJWeHg5NzJ4UXZjY2h4ckI2OG14U3F2UzB1c2otekEtZVdGaw==","email":"tyip@redhat.com"},"registry.redhat.io":{"auth":"NTI1MTE4NzF8dWhjLTFRWVJlZ1Fta0dyNWVtNnFyc3RCMGRtSENHeDpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTVaR1ZpTkdaak1HVTVaalUwWldNMllqaGxaRFV3TW1FM016STROelF5TWlKOS5odjcxRHJFdGJCa1RqcmtxdWZUQndRUzJuU1pHWmpmVzV3RHR0cXlsc24taFZzTmpKVEt3UHdnbjREX1ZuV05wSk14S05yeWdtb1JKQzFaeVU5Ql92UlIxOEs2alBoeVZSM0QzeGNzZnhTZHdUakJnMFZTbnVlN1RSNGloNkV5SjV2SWZhOUpuc05PR1A2SGV1aGhPSHhnLU1IYV8xMERFS25EN1lFNFBXYmlXYmhPWmlOX2hOdmFyOEo4S2R0aElPbWFsTEczQWZPU1drU1NkX1ZONEtZSGRjSlJ1c3F1RkROYk1pNVVIQmI5OWRheFdlQmVXRGNwblpoMHFFTWR1TzhtTlV0YW5CVVNrSDUwNVpxVmphejNQbDBwbF9MSDFPVEVpTmlrd3F6eGRGeG0tSDVzTzA1dnpKcTd2V1JEN3RjNGpVSWxaWV9WU0gtRDNGbEE1V2c4WVNlSU90cFFBZmd2QkFyTko5dnRvUlRNY3FIOXN6VEFQc25JbHI4TWlUMTFWRWNCLVVkNmxkYXlTU1NEU2lRcFk5X2lydm84aGJhRUc4YnB0N2FLaS1NV0hBbFBROTI3WVBvT1pZM2FSY3MtTlpDZXlUREtmNnQ1LUJFWF9tWVp0Snp4a1hlRFZac2pRRjlWcWM5VERtbGFJU1l6eEtoVkZUbTFYNG51T3BIam9HNk5ZaFdNQ1B4ZmU0VkNBYUo3alFVN0tZampoTXFyTUhtWl9IZ1dKOTlBZzZYVTFsWkFDc251RWJtMTdZdGcwbEw5WUh5QnljUkFVZWY5UTgzR21hM0ItUXBfcUhEVWxKWXpnZGpWMGg0bjNQQllpNHo1bXB4M3pxRjFjMjE4WXlYMnJWeHg5NzJ4UXZjY2h4ckI2OG14U3F2UzB1c2otekEtZVdGaw==","email":"tyip@redhat.com"}}}'
+sshKey: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE8IzQtgWNog0WV5HpL8xWbzpUQ9Kbzc59LaHCJ+eJxk kni@provisioner.hklab-redhat.com'

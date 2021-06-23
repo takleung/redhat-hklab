@@ -33,5 +33,12 @@ $ORIGIN 20.168.192.in-addr.arpa.
 75      PTR     compute-14.cluster.demo.local.
 76      PTR     compute-15.cluster.demo.local.
 72	PTR	ray-adfs.cluster.demo.local.
+77	PTR	provisioner.hklab-redhat.com.
+29	PTR	bootstrap.ocp4.hklab-redhat.com.
+29	PTR	api.ocp4.hklab-redhat.com.
+29	PTR	api-int.ocp4.hklab-redhat.com.
+78	PTR	master0.ocp4.hklab-redhat.com.
+79      PTR     master1.ocp4.hklab-redhat.com.
+80      PTR     master2.ocp4.hklab-redhat.com.
 110	PTR	esxi11.hklab.redhat.com.
 30	PTR	storage.cluster.demo.local.

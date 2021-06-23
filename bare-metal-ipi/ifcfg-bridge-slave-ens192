@@ -1,0 +1,7 @@
+TYPE=Ethernet
+NAME=bridge-slave-ens192
+UUID=4f53a64a-bcef-4dd7-a4db-e39a3f432fe6
+DEVICE=ens192
+ONBOOT=yes
+BRIDGE_UUID=57af2b5a-528a-4cf0-99c3-7f171bd47bc1
+BRIDGE=baremetal

@@ -17,6 +17,7 @@ nas01		IN	A	192.168.39.3
 esxi01          IN      A       192.168.39.11
 esxi02		IN	A	192.168.39.12
 esxi03		IN	A	192.168.39.13
+esxi04		IN	A	192.168.39.14
 supermicro	IN	A	192.168.35.12
 dc01-gateway    IN      A       192.168.39.21
 dc02-gateway    IN      A       192.168.39.22
@@ -36,6 +37,31 @@ api.acm       IN      A       192.168.20.172
 api.rhv       IN      A       192.168.20.174
 *.apps.rhv    IN      A       192.168.20.176
 
+api.bm       IN      A       192.168.20.179
+*.apps.bm    IN      A       192.168.20.180
+
+;provisioner	IN	A	192.168.20.39
+provisioner	IN	A	192.168.20.77
+
+; The api identifies the IP of your load balancer.
+api.ocp4		IN	A	192.168.20.29
+api-int.ocp4		IN	A	192.168.20.29
+;
+; The wildcard also identifies the load balancer.
+*.apps.ocp4		IN	A	192.168.20.29
+;
+; Create an entry for the bootstrap host.
+bootstrap.ocp4		IN	A	192.168.20.29
+;
+; Create entries for the master hosts.
+master0.ocp4		IN	A	192.168.20.78
+master1.ocp4		IN	A	192.168.20.79
+master2.ocp4		IN	A	192.168.20.80
+;
+; Create entries for the worker hosts.
+; worker0.ocp4		IN	A	192.168.1.11
+; worker1.ocp4		IN	A	192.168.1.7
+;
 ;------------- Ray DNS end ------------------------
 
 
