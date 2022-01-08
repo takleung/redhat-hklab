@@ -1,0 +1,120 @@
+INFO Creating infrastructure resources...         
+INFO Waiting up to 20m0s for the Kubernetes API at https://api.ocp47.ray-hklab.com:6443... 
+INFO API v1.20.0+bafe72f up                       
+INFO Waiting up to 30m0s for bootstrapping to complete... 
+INFO Destroying the bootstrap resources...        
+INFO Waiting up to 40m0s for the cluster at https://api.ocp47.ray-hklab.com:6443 to initialize... 
+INFO Waiting up to 10m0s for the openshift-console route to be created... 
+INFO Install complete!                            
+INFO To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/home/ray/ocp47-install/auth/kubeconfig' 
+INFO Access the OpenShift web-console here: https://console-openshift-console.apps.ocp47.ray-hklab.com 
+INFO Login to the console with user: "kubeadmin", and password: "Cvk5E-4inkb-msWSb-AyGgN" 
+
+
+https://syndesis-rhi-fuse-online.apps.ocp4.ray-hklab.com/
+
+
+https://microcks-microcks.apps.cluster-vnnw4.vnnw4.sandbox381.opentlc.com/rest/Locations-opentlc-mgr/1.0.0/locations
+
+5581c3a3
+
+8c2520911199634e38b877efe3d9adae
+
+want to have PoC or pilot to backup devsecops environment
+pipeline template
+1. frontend - ionic
+2. backend - spring boot/weblogic
+Ci + simple Cd
+doens't want to cloud, suggest on-prem environment
+want to self security tools like checkmars(IAST,SAST), jenkins
+sonaquare,gitlab(single docker), OWASP
+doesn't need JIRA
+MVP requirement, As small as possible
+Openshift not a core but you can do
+Will reuse the environment
+
+Developer Lab 5 - Managed API Endpoints
+https://keycloak-sso.apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com/
+admin
+oU0hGs4GQoLx4w==
+
+apiuser
+apipassword
+
+https://3scale-admin.apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com/
+admin
+RxPpnKUe
+
+Token: 50677000d65938e225aae2346a80441a98763af8e77221e0d41ba105bcafaa3b
+
+curl -X POST http://threescale-automate-international.{openshift-app-host}/threescale/automate/{YOUR_API_TOKEN}/{user-username}/{openshift-app-host}
+
+curl -X POST http://threescale-automate-international.apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com/50677000d65938e225aae2346a80441a98763af8e77221e0d41ba105bcafaa3b/admin/apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com
+
+curl -X POST http://threescale-automate-international.apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com/50677000d65938e225aae2346a80441a98763af8e77221e0d41ba105bcafaa3b/admin/user/apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com
+
+4c56c20d-f78c-426c-9eae-bc22742100ee
+
+echo -n | openssl s_client -connect <rhsso_fqdn>:<rhsso_port> -servername <rhsso_fqdn> --showcerts | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > customCA.pem
+
+echo -n | openssl s_client -connect keycloak-sso.apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com:443 -servername keycloak-sso.apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com/ --showcerts | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > customCA.pem
+
+curl -v https://keycloak-sso.apps.cluster-sdjhf.sdjhf.sandbox1189.opentlc.com/auth/realms/master --cacert customCA.pem
+
+sudo coreoso-installer install /dev/sda --ignition-url http://172.20.8.29/bootstrap.ign --insecure-ignition --copy-network
+
+apiVersion: local.storage.openshift.io/v1
+kind: LocalVolume
+metadata:
+  name: local-disks
+  namespace: openshift-local-storage
+spec:
+  nodeSelector: 
+    nodeSelectorTerms:
+    - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker2.ocp4.ray-hklab.com
+  storageClassDevices:
+    - storageClassName: local-sc
+      volumeMode: Filesystem 
+      fsType: xfs 
+      devicePaths: 
+        - /dev/vdb
+3scale
+admin
+AHfRdTTq
+
+
+sso
+admin
+JEHSxlcAxdf42g==
+
+<a class="navbar-brand" href="/">{{  provider.name }}</a>
+
+c86d592c-8f2e-4433-ab04-48c3d90d4b76
+
+api.ocp4x-1             IN      A   172.20.8.65
+*.apps.ocp4x-1          IN      A   172.20.8.66
+
+65      PTR     api.ocp4x-1.ray-hklab.com.
+66      PTR     apps.ocp4x-1.ray-hklab.com.
+67      PTR     api.ocp4x-2.ray-hklab.com.
+68      PTR     apps.ocp4x-2.ray-hklab.com.
+69      PTR     api.ocp4x-3.ray-hklab.com.
+70      PTR     apps.ocp4x-3.ray-hklab.com.
+
+DC01-Ray-PG01
+
+id.giffgaff.com
+
+skipMachinePools: true
+
+hFqBihA!D75!
+
+i-users-api.rhi-fuse-online.srv.cluster.local
+
+i-users-api.rhi-fuse-online.svc.cluster.local
+
+https://i-users-api-rhi-fuse-online.apps.ocp4.ray-hklab.com:443

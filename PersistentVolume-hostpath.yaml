@@ -1,0 +1,27 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: lv-sdb-001
+  labels:
+    type: local
+  annotations:
+    pv.kubernetes.io/bound-by-controller: 'yes'
+spec:
+  capacity:
+    storage: 50Gi
+  hostPath:
+    path: /var/hpvolumes/001
+    type: ''
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: hostpath-provisioner
+  volumeMode: Filesystem
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - worker6.ocp4.ray-hklab.com

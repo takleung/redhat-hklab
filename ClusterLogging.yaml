@@ -15,23 +15,63 @@ spec:
       audit:
         maxAge: 7d
     elasticsearch:
+      tolerations:
+        - key: infra
+          value: reserved
+          effect: NoSchedule
+        - key: infra
+          value: reserved
+          effect: NoExecute
+      nodeSelector:
+        node-role.kubernetes.io/infra: ""    
       nodeCount: 3 
       storage:
-        storageClassName: "nas-iscsi" 
+        storageClassName: "ocs-storagecluster-cephfs" 
         size: 200G
+      proxy: 
+        resources:
+          limits:
+            memory: 256Mi
+          requests:
+             memory: 256Mi        
       resources: 
         requests:
-          memory: "4Gi"
+          memory: "16Gi"
       redundancyPolicy: "SingleRedundancy"
   visualization:
     type: "kibana"  
     kibana:
-      replicas: 1
+      tolerations:
+        - key: infra
+          value: reserved
+          effect: NoSchedule
+        - key: infra
+          value: reserved
+          effect: NoExecute
+      nodeSelector:
+        node-role.kubernetes.io/infra: ""        
+      replicas: 2
   curation:
-    type: "curator"
+    type: "curator"    
     curator:
+      tolerations:
+        - key: infra
+          value: reserved
+          effect: NoSchedule
+        - key: infra
+          value: reserved
+          effect: NoExecute
+      nodeSelector:
+        node-role.kubernetes.io/infra: ""        
       schedule: "30 3 * * *" 
   collection:
     logs:
       type: "fluentd"  
-      fluentd: {}
+      fluentd:
+        tolerations:
+          - key: infra
+            value: reserved
+            effect: NoSchedule
+          - key: infra
+            value: reserved
+            effect: NoExecute
